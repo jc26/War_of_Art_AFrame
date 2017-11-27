@@ -3,40 +3,63 @@
   <head>
     <meta charset="utf-8">
     <title>War of Art</title>
-    <meta name="description" content="Hello, World! - A-Frame">
+    <meta name="description" content="War of Art - A Virtual Interactive Experience">
     <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.12.4/dist/aframe-extras.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--CDN links for TweenLite, CSSPlugin, and EasePack-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/plugins/CSSPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/easing/EasePack.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenLite.min.js"></script>
+    <script src="components.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,300i,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="styles/index.css">
   </head>
   <body>
+    <a href="index.html">
+      <img id="logo" src="images/logo.png" alt="logo" />
+    </a>
+    <div id="about-link">about</div>
     <a-scene inspector="url: https://aframe.io/releases/0.3.0/aframe-inspector.min.js">
       <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
       <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
       <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder> -->
       <a-sky color="#000"></a-sky>
-      <a-light type="ambient" color="#131217"></a-light>
-      <a-light type="point" color="#fff" position="0 5 0" intensity="0.2" decay="25"></a-light>
-      <a-plane id="after" position="0 0 -4" rotation="-90 0 0" width="1000" height="1000" color="#dcddda" metalness="0.5"></a-plane>
+      <a-light type="ambient" color="#131217" intensity="0.1"></a-light>
+      <!-- <a-light type="point" color="#fff" position="0 5 0" intensity="0.3" decay="25"></a-light> -->
+      <a-plane id="after" position="0 0 -4" rotation="-90 0 0" width="1000" height="1000" color="#dcddda" metalness="0.1"></a-plane>
       <a-assets>
         <!-- <a-asset-item id="resist" src="/models/test-2/test-2.gltf"></a-asset-item> -->
-        <!-- <a-asset-item id="resist" src="/models/test-2-dae/test-2.dae"></a-asset-item> -->
-        <!-- <a-asset-item id="resist" src="/models/test-2/test-2.gltf"></a-asset-item> -->
-        <!-- <a-asset-item id="resist" src="/models/test-2-threejs/test-2.json"></a-asset-item> -->
-        <!-- <img id="texture1" src="https://s3-us-west-2.amazonaws.com/a6-warofart/texture1.png"> -->
-        <!-- <a-asset-item id="material" src="models/resistance_solo.mtl"></a-asset-item> -->
       </a-assets>
       <!-- <a-entity collada-model="#resist" rotation="0 0 0" position="0 1 -10" scale="5 5 5"></a-entity> -->
-      <!-- <a-entity json-model="src:#resist" rotation="0 0 0" position="0 1 -10" scale="5 5 5"></a-entity> -->
-      <!-- <a-entity object-model="src: url(/models/1_infallible/1_infallible.json);" rotation="0 0 0" position="0 0 15" scale="5 5 5"></a-entity> -->
-      <!-- <a-entity object-model="src: url(/models/2_fueledbyfear/2_fueledbyfear.json);" rotation="0 24 0" position="6.5325 0 13.6115" scale="5 5 5"></a-entity>
-      <a-entity object-model="src: url(/models/3_finishline/3_finishline.json);" rotation="0 48 0" position="6.5325 0 13.6115" scale="5 5 5"></a-entity> -->
-      <!-- <a-entity object-model="src: url(/models/1_infallible/1_infallible.json);" rotation="0 0 0" position="0 0 10" scale="5 5 5"></a-entity> -->
-      <!-- <a-entity gltf-model-legacy="src: url(/models/test-2/test-2.gltf);" rotation="0 0 0" position="0 1 -10" scale="5 5 5"></a-entity> -->
-      <!-- <a-gltf-model src="#resist" rotation="0 0 0" position="0 1 -10" scale="5 5 5"></a-gltf-model> -->
-      <!-- <a-entity resist-model="" rotation="0 0 0" position="0 1 -10" scale="5 5 5"></a-entity> -->
-      <a-entity camera="userHeight: 8" look-controls></a-entity>
+      <!-- <a-plane class="follow-camera" width="2" height="3" position="-2 8 -2" rotation="0 0 0" material="transparent: true; opacity: 0.5"></a-plane> -->
+      <a-entity id="user" camera="userHeight: 8" look-controls>
+        <a-cursor fuse="true" fuse-timeout="100" color="#FF0000" geometry="primitive: circle" scale="0.008 0.008 0.008" cam-intersect>
+          <!-- <a-animation begin="click" easing="ease-in" attribute="scale" dur="100"
+                       fill="forwards" from="0.008 0.008 0.008" to="0.01 0.01 0.01"></a-animation>
+          <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="100"
+                       fill="backwards" from="0.01 0.01 0.01" to="0.008 0.008 0.008"></a-animation> -->
+        </a-cursor>
+      </a-entity>
     </a-scene>
+    <div id='desc-panel' class="panel">
+      <div class="inside-panel">
+        <div id='desc-title' class='title'>look at your enemy</div>
+        <div id='desc-text' class='body'></div>
+        <img class='panel-img' src="images/panel.png" alt="description" />
+      </div>
+    </div>
+    <div id="howto-panel" class="panel">
+      <div class="inside-panel">
+        <div id='howto-title' class='title'>look at your enemy</div>
+        <div id='howto-text' class='body'></div>
+        <div id='conquer-btn' class='button'>CONQUER</div>
+        <img class='panel-img' src="images/panel.png" alt="description" />
+      </div>
+    </div>
+
   </body>
 
   <script src="index.js"></script>
