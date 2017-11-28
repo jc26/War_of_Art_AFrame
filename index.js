@@ -20,4 +20,5 @@ $(document).ready(function(){
       before = value.file;
     });
   });
+  $('#progress-mark').before("<svg id='progress-line' height='5' width='40%'><line x1='0' y1='0' x2='50%' y2='0' style='stroke:rgb(255,0,0);stroke-width:5' /></svg>");
 });

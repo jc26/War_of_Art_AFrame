@@ -76,7 +76,6 @@ button.a-enter-vr-button {
   padding: 11px 0 11px 2px;
   width: 100%;
   position: absolute;
-  /*animation: blinker 1s linear infinite;*/
 }
 
 .panel-img {
@@ -142,11 +141,7 @@ button.a-enter-vr-button {
   text-shadow: 1px 1px 2px #427388;
 }
 
-/*.panel .panel-img {
-  display: none;
-}*/
-
-img#progress-bar, #progress-mark {
+img#progress-bar, #progress-mark, #progress-line {
   position: absolute;
   margin: 0 auto;
   left: 0;
@@ -183,10 +178,10 @@ img#progress-bar {
 
 #progress-mark {
   bottom: 43px;
-  margin-right: 38.9%;
+  margin-right: 0%;
+  /*margin-right: 38.9%;*/
   /*margin-right: -38.9%;*/
   text-align: center;
-  /*padding-left: 899px;*/
 }
 
 p#progress-label {
@@ -196,6 +191,49 @@ p#progress-label {
   text-align: center;
   margin: 0px;
   margin-left: 5px;
-  /*width: 30px;*/
-  /*margin-right: 20px;*/
+}
+
+svg.radar {
+  position: absolute;
+}
+
+/* radar animation adapted from http://jsfiddle.net/Fy8vD/ */
+.radar {
+    background: red;
+    -webkit-border-radius: 30px;
+    height: 18px;
+    width: 18px;
+    position: absolute;
+    bottom: -2px;
+    z-index: -1;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    opacity: 0.0;
+    -webkit-animation: pulsate 3s ease-out;
+    -webkit-animation-iteration-count: infinite;
+}
+
+#radar-2 {
+  -webkit-animation-delay: 1s;
+  animation-delay: 0.5s;
+}
+
+#radar-3 {
+  -webkit-animation-delay: 2s;
+  animation-delay: 1s;
+}
+
+@-webkit-keyframes pulsate {
+    0% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
+    50% {opacity: 0.5;}
+    100% {-webkit-transform: scale(2, 2); opacity: 0.0;}
+}
+
+#progress-line {
+  bottom: 46px;
+}
+
+#progress-dot {
+  z-index: 1000;
 }
