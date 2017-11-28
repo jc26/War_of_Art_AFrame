@@ -12,8 +12,8 @@
     "position": 1,
     "name": "FEAR",
     "file": "2_fear",
-    "desc": "Resistance has no strength of its own. Every ounce of juice it possesses comes from us. We feed it with power by our fear of it.",
-    "howto": "Fear is good. Fear is an indicator. Fear tells us what we have to do. The more scared we are of a work or calling, the more certain we can be that we have to do it. Resistance is experienced as fear; the degree of fear equates to the strength of Resistance. Master that fear and we conquer Resistance."
+    "desc": "Resistance has no strength of its own. Every ounce of juice it possesses comes from us. We feed it with power by our fear of it. The amateur believes he must first overcome his fear; then he can do his work.",
+    "howto": "The professional knows that fear can never be overcome. He knows there is no such thing as a fearless warrior or a dread-free artist. Fear is good. Fear is an indicator. Fear tells us what we have to do. The more scared we are of a work or calling, the more certain we can be that we have to do it. Resistance is experienced as fear; the degree of fear equates to the strength of Resistance. Master that fear and we conquer Resistance."
   },
   "3_finishline": {
     "id": 3,
@@ -44,7 +44,7 @@
     "position": 5,
     "name": "PROCRASTINATION",
     "file": "6_procrastination",
-    "desc": "Procrastination is the most common manifestation of Resistance because it’s the easiest to rationalize. We don’t tell ourselves, “I’m never going to write my symphony.” Instead we say, “I am going to write my symphony; I’m just going to start tomorrow.",
+    "desc": "Procrastination is the most common manifestation of Resistance because it’s the easiest to rationalize. We don’t tell ourselves, “I’m never going to write my symphony.” Instead we say, “I am going to write my symphony; I’m just going to start tomorrow.”",
     "howto": "Never forget: This very moment, we can change our lives. There never was a moment, and never will be, when we are without the power to alter our destiny. This second, we can turn the tables on Resistance. This second, we can sit down and do our work."
   },
   "7_trouble": {
@@ -109,12 +109,12 @@
     "name": "OVERAMBITION",
     "file": "14_overambition",
     "desc": "Resistance uses his own enthusiasm against him. Resistance gets us to plunge into a project with an overambitious and unrealistic timetable for its completion. It knows we can’t sustain that level of intensity. We will hit the wall. We will crash.",
-    "howto": "The professional, on the other hand, understands delayed gratification. He is the ant, not the grasshopper; the tortoise, not the hare. The professional arms himself with patience, not only to give the stars time to align in his career, but to keep himself from flaming out in each individual work. He conserves his energy. He prepares his mind for the long haul."
+    "howto": "The professional understands delayed gratification. He is the ant, not the grasshopper; the tortoise, not the hare. The professional arms himself with patience, not only to give the stars time to align in his career, but to keep himself from flaming out in each individual work. He conserves his energy. He prepares his mind for the long haul."
   },
   "15_failuresuccess": {
     "id": 15,
     "position": 14,
-    "name": "FAILURE & SUCCESS",
+    "name": "REJECTION",
     "file": "15_failuresuccess",
     "desc": "Resistance uses fear of rejection to paralyze us and prevent us, if not from doing our work, then from exposing it to public evaluation.",
     "howto": "Editors are not the enemy; critics are not the enemy. Resistance is the enemy. The battle is inside our own heads. We cannot let external criticism, even if it’s true, fortify our internal foe. That foe is strong enough already. A professional schools herself to stand apart from her performance, even as she gives herself to it heart and soul. She does not forget that the work is not her. Her artistic self contains many works and many performances. Already the next is percolating inside her. The next will be better, and the one after that better still."
