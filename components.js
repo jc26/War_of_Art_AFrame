@@ -17,7 +17,7 @@ AFRAME.registerComponent('cam-intersect', {
           tl.restart();
           tl.pause();
           $("#desc-title").text("DESCRIPTION");
-          $("#howto-title").text("HOW TO KILL");
+          $("#howto-title").text("STRATEGY");
           $(".title").css("font-size", "13px");
           $(".title").css("font-weight", "600");
           $(".title").css("letter-spacing", "5px");
@@ -28,6 +28,14 @@ AFRAME.registerComponent('cam-intersect', {
           $(".panel-img").css("visibility", "visible");
           $("#desc-text").text(data[evt.detail.intersectedEl.id].desc);
           $("#howto-text").text(data[evt.detail.intersectedEl.id].howto);
+          $('#conquer-btn').val(evt.detail.intersectedEl.id);
+          if (localStorage.getItem(evt.detail.intersectedEl.id) === "true") {
+            $('#conquer-btn').text("REVIVE");
+            $('#conquer-btn').css('background', 'rgba(32,32,32,1)');
+          } else {
+            $('#conquer-btn').text("CONQUER");
+            $('#conquer-btn').css('background', 'rgba(200,32,46,1)');
+          }
         });
       }
     });
