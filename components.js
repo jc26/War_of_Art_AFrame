@@ -10,9 +10,11 @@ AFRAME.registerComponent('cam-intersect', {
     this.el.addEventListener('click', function (evt) {
       if (evt.detail.intersectedEl != null && evt.detail.intersectedEl.className === "army") {
         var light = $('#' + evt.detail.intersectedEl.id + '_light');
-        light[0].setAttribute('light', {
-          intensity: 3.0
-        });
+        if (localStorage.getItem(evt.detail.intersectedEl.id) === "true") {
+          light[0].setAttribute('light', { intensity: 0.1 });
+        } else {
+          light[0].setAttribute('light', { intensity: 3.0 });
+        }
         $.getJSON("resources/resistance_info.json", function(data) {
           tl.restart();
           tl.pause();
@@ -36,6 +38,7 @@ AFRAME.registerComponent('cam-intersect', {
             $('#conquer-btn').text("CONQUER");
             $('#conquer-btn').css('background', 'rgba(200,32,46,1)');
           }
+
         });
       }
     });
@@ -43,9 +46,11 @@ AFRAME.registerComponent('cam-intersect', {
     this.el.addEventListener('mouseleave', function (evt) {
       if (evt.detail.intersectedEl != null && evt.detail.intersectedEl.className === "army") {
         var light = $('#' + evt.detail.intersectedEl.id + '_light');
-        light[0].setAttribute('light', {
-          intensity: 0.3
-        });
+        if (localStorage.getItem(evt.detail.intersectedEl.id) === "true") {
+          light[0].setAttribute('light', { intensity: 0 });
+        } else {
+          light[0].setAttribute('light', { intensity: 0.3 });
+        }
         tl.play();
         $(".title").text("look at your enemy");
         $(".title").css("font-size", "10px");

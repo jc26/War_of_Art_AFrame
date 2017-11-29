@@ -15,7 +15,7 @@ $(document).ready(function(){
       var z = Math.cos(rotation * (Math.PI/180)) * radius;
       var lightZ = Math.cos(rotation * (Math.PI/180)) * (radius-2);
       var html = "<a-entity id='" + file + "' class='army' object-model='src: url(/models/" + fileName + ");' rotation='0 " + rotation + " 0' position='" + x + " 0 " + z + "' scale='5 5 5'></a-entity>";
-      html += "<a-entity text='align: center; width: 12; value: " + value.name + "' rotation='0 " + (rotation + 180) + " 0' position='" + x + " 10 " + z + "'></a-entity>";
+      html += "<a-entity id='" + file + "_text" + "' text='align: center; width: 12; value: " + value.name + "' rotation='0 " + (rotation + 180) + " 0' position='" + x + " 10 " + z + "'></a-entity>";
       html += "<a-entity id='" + file + "_light" + "' light='type: spot; angle: 20; intensity: 0.3; penumbra: 1' rotation='-90' position='" + lightX + " 15 " + lightZ + "'></a-entity>"
       $("#" + before).after(html);
       before = value.file;
@@ -31,12 +31,15 @@ $(document).ready(function(){
   });
 
   var progressDelta = Math.round(100 / localStorage.getItem("size"));
-  var clickDisabled = false; // prevent double clicks 
+  var clickDisabled = false; // prevent double clicks
   $('#conquer-btn').click(function() {
     if (clickDisabled) { return; }
     clickDisabled = true;
     setTimeout(function(){clickDisabled = false;}, 1500);
     var conquerBtn = $('#conquer-btn');
+    var currEnemy = $('#conquer-btn').val();
+    var currLight = $('#' + currEnemy + '_light');
+    var currText = $('#' + currEnemy + '_text');
     var progressMark = $('#progress-mark');
     var progressLabel = $('#progress-label');
     var oldProgressLabel = parseInt(progressLabel.text().slice(0, -1));
@@ -47,13 +50,17 @@ $(document).ready(function(){
       newProgress = oldProgressLabel + progressDelta;
       TweenLite.to(counter, 1, {progress:"+=" + progressDelta, roundProps:"progress", onUpdate:updateHandler, ease:Linear.easeNone});
       TweenLite.to(conquerBtn, 1, {css:{background:'rgba(32,32,32,1)'}});
-      localStorage.setItem($('#conquer-btn').val(), true);
+      localStorage.setItem(currEnemy, true);
+      currLight[0].setAttribute('light', { intensity: 0 });
+      currText[0].setAttribute('text', { color: "#7D7D7D", width: 10 });
     } else {
       $('#conquer-btn').text("CONQUER");
       newProgress = oldProgressLabel - progressDelta;
       TweenLite.to(counter, 1, {progress:"-=" + progressDelta, roundProps:"progress", onUpdate:updateHandler, ease:Linear.easeNone});
       TweenLite.to(conquerBtn, 1, {css:{background:'rgba(200,32,46,1)'}});
-      localStorage.setItem($('#conquer-btn').val(), false);
+      localStorage.setItem(currEnemy, false);
+      currLight[0].setAttribute('light', { intensity: 3.0 });
+      currText[0].setAttribute('text', { color: "#FFF", width: 12 });
     }
     var newMarginRight = 39 - (39 * (newProgress/100));
     // animation for dot
