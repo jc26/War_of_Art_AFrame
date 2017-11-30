@@ -2,21 +2,37 @@ body {
   font-family: 'Roboto Mono', sans-serif;
 }
 
-#about-link {
+.links {
+  color: white;
+}
+
+.titles {
+  font-style: italic;
+}
+
+#about-link, #help-link {
   position: absolute;
-  left: 5%;
   top: 40px;
-  z-index: 2;
+  z-index: 1000;
   color: white;
   font-size: 12px;
   font-weight: 300;
   cursor: pointer;
   display: block;
-  width: 50px;
   height: 20px;
 }
 
-#about-link:after {
+#about-link {
+  left: 5%;
+  width: 48px;
+}
+
+#help-link {
+  right: 5%;
+  width: 38px;
+}
+
+#about-link:after, #help-link:after {
   display:block;
   content: '';
   border-bottom: solid 1px #fff;
@@ -25,8 +41,149 @@ body {
   transform-origin: 0% 50%;
 }
 
-#about-link:hover:after {
+#about-link:hover:after, #help-link:hover:after ,#about-link:active:after, #help-link:active:after {
   transform: scaleX(0.75);
+}
+
+#about-modal, #help-modal {
+  position: absolute;
+  background-color: #0F0F0F;
+  color: white;
+  width: 100%;
+  height: 0%;
+  bottom: 0;
+  z-index: 999;
+  margin: 0 auto;
+}
+
+.section {
+  display: inline-block;
+  padding-bottom: 20px;
+}
+
+img#quote-img {
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 4%;
+}
+
+#about-text {
+  width: 50%;
+}
+
+#help-text {
+  width: 40%;
+}
+
+#about-text, #help-text {
+  height: 65%;
+  top: 20%;
+  position: relative;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  font-size: 13px;
+  display: block;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+#quote {
+  text-align: center;
+  font-weight: 100;
+  font-style: italic;
+}
+
+#quote span {
+  font-weight: 600;
+}
+
+#help-advice {
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  margin-top: 60px;
+  font-weight: 100;
+  font-size: 12px;
+  display: block;
+  width: 75%;
+  text-align: center;
+}
+
+.heading {
+  width: 15%;
+  float: left;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.body {
+  width: 85%;
+  float: right;
+  font-weight: 100;
+}
+
+#buybook-btn, .ok-btn {
+  position: relative;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 12%;
+  top: 25%;
+}
+
+.about-buttons {
+  position: relative;
+  top: 25%;
+}
+
+.about-buttons .ok-btn {
+  float: left;
+  margin-left: 35%;
+}
+
+.about-buttons #buybook-btn {
+  float: right;
+  margin-right: 35%;
+}
+
+/* button hover animation taken from https://codepen.io/davidicus/pen/emgQKJ */
+.slick-button {
+  border: 2px solid white;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 6px 0 6px 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.slick-button a {
+  text-decoration: none;
+  color: white;
+  z-index: 20;
+  display: block;
+  width: 100%;
+}
+
+.slick-button:after {
+  background: #fff;
+  content: "";
+  height: 155px;
+  left: -75px;
+  opacity: .2;
+  position: absolute;
+  top: -50px;
+  transform: rotate(35deg);
+  transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
+  width: 50px;
+  z-index: -10;
+}
+
+.slick-button:hover:after {
+  left: 120%;
+  transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 img#logo {
@@ -35,14 +192,16 @@ img#logo {
   margin: 0 auto;
   left: 0;
   right: 0;
-  margin-top: 15px;
-  z-index: 2;
+  top: 15px;
+  z-index: 1000;
 }
 
 button.a-enter-vr-button {
   bottom: initial;
   top: -840%;
-  right: 3.5%;
+  /*top: -520%;*/
+  left: 13%;
+  z-index: 999;
 }
 
 .panel {

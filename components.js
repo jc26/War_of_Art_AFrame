@@ -35,10 +35,9 @@ AFRAME.registerComponent('cam-intersect', {
             $('#conquer-btn').text("REVIVE");
             $('#conquer-btn').css('background', 'rgba(32,32,32,1)');
           } else {
-            $('#conquer-btn').text("CONQUER");
+            $('#conquer-btn').text("DEFEAT");
             $('#conquer-btn').css('background', 'rgba(200,32,46,1)');
           }
-
         });
       }
     });
@@ -52,7 +51,7 @@ AFRAME.registerComponent('cam-intersect', {
           light[0].setAttribute('light', { intensity: 0.3 });
         }
         tl.play();
-        $(".title").text("look at your enemy");
+        $(".title").text("face your enemy");
         $(".title").css("font-size", "10px");
         $(".title").css("font-weight", "300");
         $(".title").css("font-style", "italic");

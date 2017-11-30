@@ -13,40 +13,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
     <script src="components.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,300i,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:100,100i,300,300i,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="styles/index.css">
   </head>
   <body>
-    <a href="index.html">
-      <img id="logo" src="images/logo.png" alt="logo" />
-    </a>
     <div id="about-link">about</div>
+    <div id="help-link">help</div>
+    <div id="above"></div>
     <a-scene inspector="url: https://aframe.io/releases/0.3.0/aframe-inspector.min.js">
       <a-sky color="#000"></a-sky>
       <a-light type="ambient" color="#131217" intensity="0.1"></a-light>
       <a-plane id="after" position="0 0 -4" rotation="-90 0 0" width="1000" height="1000" color="#dcddda" metalness="0.1"></a-plane>
       <a-entity id="user" camera="userHeight: 8" look-controls>
         <a-cursor fuse="true" fuse-timeout="100" color="#FF0000" geometry="primitive: circle" scale="0.008 0.008 0.008" cam-intersect>
-          <!-- <a-animation begin="click" easing="ease-in" attribute="scale" dur="100"
-                       fill="forwards" from="0.008 0.008 0.008" to="0.01 0.01 0.01"></a-animation>
-          <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" dur="100"
-                       fill="backwards" from="0.01 0.01 0.01" to="0.008 0.008 0.008"></a-animation> -->
         </a-cursor>
       </a-entity>
     </a-scene>
     <div id='desc-panel' class="panel">
       <div class="inside-panel">
-        <div id='desc-title' class='title'>look at your enemy</div>
+        <div id='desc-title' class='title'>face your enemy</div>
         <div id='desc-text' class='body'></div>
         <img class='panel-img' src="images/panel.png" alt="description" />
       </div>
     </div>
     <div id="howto-panel" class="panel">
       <div class="inside-panel">
-        <div id='howto-title' class='title'>look at your enemy</div>
+        <div id='howto-title' class='title'>face your enemy</div>
         <div id='howto-text' class='body'></div>
         <div id='btn-area'>
-          <div id='conquer-btn' class='button'>CONQUER</div>
+          <div id='conquer-btn' class='button'>DEFEAT</div>
         </div>
         <img class='panel-img' src="images/panel.png" alt="description" />
       </div>
@@ -63,6 +58,104 @@
       <div id="radar-2" class="radar"></div>
       <div id="radar-3" class="radar"></div>
     </div>
+    <div id="below"></div>
+    <div id="about-modal">
+      <div id="about-text" class="about-content">
+        <div class="section">
+          <div id="thebook-heading" class="heading">
+            the book
+          </div>
+          <div id="thebook-body" class="body">
+            <a class="links titles" href="http://amzn.to/2nhTJoo target="_blank"">The War of Art</a> is a book written by Steven Pressfield, an American author of historical fiction, nonfiction, and screenplays.
+            The book personifies procrastination, mediocrity, and a host of other universal attributes that prevent people from living life to the fullest, as a entity known as Resistance.
+            It defines Resistance, explains why we must fight it our own lives, and how we can fight it.
+            This website is a tribute to the book that changed my life and could never do the original book justice.
+            The original book is brimming with much more content than this website and is a priceless weapon if put to good use.
+          </div>
+        </div>
+        <div class="section">
+          <div id="credits-heading" class="heading">
+            credits
+          </div>
+          <div id="credits-body" class="body">
+            This site was designed by Jason Chang.
+            All quotes are directly taken or adapted from <a class="links titles" href="http://amzn.to/2nhTJoo" target="_blank">The War of Art</a> by Steven Pressfield.
+            Base models were taken from <a class="links" href="https://www.adobe.com/products/fuse.html" target="_blank">Adobe Fuse</a>.
+            Texturing was done in <a class="links" href="https://www.maxon.net/en-us/products/cinema-4d/overview/" target="_blank">Maxon Cinema 4D</a>.
+            JSON formatting for models was exported out of <a class="links" href="https://clara.io/" target="_blank">Clara.io</a>.
+            VR scene was constructed in <a class="links" href="https://aframe.io/" target="_blank">AFrame</a>.
+            Most animations were done with <a class="links" href="https://greensock.com/" target="_blank">GreenSock</a>.
+          </div>
+        </div>
+        <div class="section">
+          <div id="butwhy-heading" class="heading">
+            but why
+          </div>
+          <div id="butwhy-body" class="body">
+            In the summer of 2017, without an internship or any pressing work to do, I resolved to search for my passion.
+            I’m currently studying Information Systems, but coding doesn’t get me excited.
+            I knew my passion was really design, but that wasn’t specific enough for me.
+            After watching YouTube videos on a design channel called “thefutur,” I stumbled across an artist and designer named, <a class="links" href="http://ashthorp.com" target="_blank">Ash Thorp</a>.
+            I immediately fell in love with his work and knew that motion graphics in feature films was what I wanted to do, a field that combines both art and design.
+            During one of his talks, Ash recommended The War of Art as a book that helped him overcome procrastination and turn his life around.
+            Similarly, feeling convicted of submitting to laziness and mediocrity, I downloaded and read the book.
+            I quickly absorbed all the book had to give me and found myself highlighting almost every sentence.
+            I knew I largely depended on CMU to give me the knowledge I wanted and the projects that I needed for my portfolio.
+            I was always looking for the next minor to apply for, the next class project to be the “one,” the next class to be where I finally learn design, etc.
+            But I realized how passive my mindset was and how formalized education had become a toxic comfort zone.
+            <br />
+            <br />
+            Think of this website as my letter to the world to leave your comfort zone.
+            The reality is that you’re going to suffer either way; you’re either going to suffer for the average life or the extraordinary life.
+            We might as well choose suffering for the extraordinary.
+            <br />
+            <br />
+            This book changed my life and helped me become active in pursuing my passions, in crafting my own career, and in living the life unlived.
+            I hope this book can do the same for you.
+          </div>
+        </div>
+      </div>
+      <div class='about-buttons'>
+        <div class='ok-btn slick-button'><a>OK</a></div>
+        <div id='buybook-btn' class='slick-button'><a href="http://amzn.to/2nhTJoo" target="_blank">BUY BOOK</a></div>
+      </div>
+    </div>
+    <div id="help-modal">
+      <div id="help-text">
+        <div id="quote">
+          <img id="quote-img" src="images/quotation_mark.png" alt="quote"/><br /><br />
+          When I say professional, I don’t mean doctors and lawyers, those of ‘the professions.’ I mean the Professional as an ideal.
+          The professional in contrast to the amateur.
+          Consider the differences.
+          The amateur plays for fun.
+          The professional plays for keeps.
+          To the amateur, the game is his avocation.
+          To the pro, it’s his vocation.
+          The amateur plays part-time, the professional full-time.
+          The amateur is a weekend warrior.
+          The professional is there seven days a week.
+          The word amateur comes from the Latin root meaning ‘to love.’
+          The conventional interpretation is that the amateur pursues his calling out of love, while the pro does it for money.
+          Not the way I see it. In my view, the amateur does not love the game enough.
+          If he did, he would not pursue it as a sideline, distinct from his ‘real‘ vocation.
+          The professional loves it so much he dedicates his life to it.
+          He commits full-time. That’s what I mean when I say turning pro.
+          Resistance hates it when we turn pro.<br /><br />
+          <span>- Steven Pressfield, The War of Art</span>
+        </div>
+        <div id="help-advice">
+          Face each of Resistance’s traits and defeat them one by one.
+          You are given their descriptions and strategies to kill them.
+          But beware, the battle must be fought anew every day.
+          Pride comes before the fall.
+          Now, go find your passion and become a pro.
+        </div>
+      </div>
+      <div class='ok-btn slick-button'><a>OK</a></div>
+    </div>
+    <a href="index.html">
+      <img id="logo" src="images/logo.png" alt="logo" />
+    </a>
   </body>
 
   <script src="index.js"></script>

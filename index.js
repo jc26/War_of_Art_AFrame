@@ -1,5 +1,33 @@
 $(document).ready(function(){
 
+  $('#about-modal').css("height", "0%");
+  $('#about-link').click(function() { toggleAbout() });
+  $('#about-modal .ok-btn').click(function() { toggleAbout() });
+  function toggleAbout() {
+    var aboutModal = $('#about-modal');
+    if (aboutModal[0].style.height === "0%") {
+      aboutModal.insertAfter('#above');
+      TweenLite.to(aboutModal, 1, {height:("100%")});
+    } else {
+      TweenLite.to(aboutModal, 1, {height:("0%")});
+      setTimeout(function () { aboutModal.insertAfter('#below'); }, 1000);
+    }
+  }
+
+  $('#help-modal').css("height", "0%");
+  $('#help-link').click(function() { toggleHelp(); });
+  $('#help-modal .ok-btn').click(function() { toggleHelp(); });
+  function toggleHelp() {
+    var helpModal = $('#help-modal');
+    if (helpModal[0].style.height === "0%") {
+      helpModal.insertAfter('#above');
+      TweenLite.to(helpModal, 1, {height:("100%")});
+    } else {
+      TweenLite.to(helpModal, 1, {height:("0%")});
+      setTimeout(function () { helpModal.insertAfter('#below'); }, 1000);
+    }
+  }
+
   $.getJSON("resources/resistance_info.json", function(data) {
     var before = "after";
     var armySize = Object.keys(data).length;
@@ -19,7 +47,6 @@ $(document).ready(function(){
       html += "<a-entity id='" + file + "_light" + "' light='type: spot; angle: 20; intensity: 0.3; penumbra: 1' rotation='-90' position='" + lightX + " 15 " + lightZ + "'></a-entity>"
       $("#" + before).after(html);
       before = value.file;
-
       // setting up local storage
       localStorage.setItem(key, false);
     });
@@ -35,7 +62,7 @@ $(document).ready(function(){
   $('#conquer-btn').click(function() {
     if (clickDisabled) { return; }
     clickDisabled = true;
-    setTimeout(function(){clickDisabled = false;}, 1500);
+    setTimeout(function(){clickDisabled = false;}, 1100);
     var conquerBtn = $('#conquer-btn');
     var currEnemy = $('#conquer-btn').val();
     var currLight = $('#' + currEnemy + '_light');
@@ -45,7 +72,7 @@ $(document).ready(function(){
     var oldProgressLabel = parseInt(progressLabel.text().slice(0, -1));
     var counter = {progress: oldProgressLabel};
     var newProgress;
-    if (conquerBtn.text() === "CONQUER") {
+    if (conquerBtn.text() === "DEFEAT") {
       $('#conquer-btn').text("REVIVE");
       newProgress = oldProgressLabel + progressDelta;
       TweenLite.to(counter, 1, {progress:"+=" + progressDelta, roundProps:"progress", onUpdate:updateHandler, ease:Linear.easeNone});
@@ -54,7 +81,7 @@ $(document).ready(function(){
       currLight[0].setAttribute('light', { intensity: 0 });
       currText[0].setAttribute('text', { color: "#7D7D7D", width: 10 });
     } else {
-      $('#conquer-btn').text("CONQUER");
+      $('#conquer-btn').text("DEFEAT");
       newProgress = oldProgressLabel - progressDelta;
       TweenLite.to(counter, 1, {progress:"-=" + progressDelta, roundProps:"progress", onUpdate:updateHandler, ease:Linear.easeNone});
       TweenLite.to(conquerBtn, 1, {css:{background:'rgba(200,32,46,1)'}});
