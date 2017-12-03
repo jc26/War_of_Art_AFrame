@@ -419,9 +419,7 @@ img#progress-bar {
 #progress-mark {
   width: 60.9%;
   bottom: 43px;
-  /*margin-right: 0%;*/
   margin-right: 39%;
-  /*margin-right: 19.5%;*/
   text-align: center;
 }
 
@@ -518,21 +516,6 @@ svg.radar {
 @keyframes animatebottom {
     from {bottom:-500px; opacity:0}
     to {bottom:0; opacity:1}
-}
-
-/* The Close Button */
-.close {
-    color: white;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
 }
 
 .modal-header {
