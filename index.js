@@ -1,30 +1,46 @@
 $(document).ready(function(){
 
-  $('#about-modal').css("height", "0%");
+  var aboutModal = $('#about-modal');
+  aboutModal.css("height", "0%");
   $('#about-link').click(function() { toggleAbout() });
-  $('#about-modal .ok-btn').click(function() { toggleAbout() });
+  $('#about-modal .ok-btn').click(function() { toggleAbout(); });
+
+  var helpModal = $('#help-modal');
+  helpModal.css("height", "0%");
+  $('#help-link').click(function() { toggleHelp(); });
+  $('#help-modal .ok-btn').click(function() { toggleHelp(); });
+
   function toggleAbout() {
-    var aboutModal = $('#about-modal');
     if (aboutModal[0].style.height === "0%") {
-      aboutModal.insertAfter('#above');
-      TweenLite.to(aboutModal, 1, {height:("100%")});
+      closeModal(helpModal);
+      openModal(aboutModal);
     } else {
-      TweenLite.to(aboutModal, 1, {height:("0%")});
-      setTimeout(function () { aboutModal.insertAfter('#below'); }, 1000);
+      closeModal(aboutModal);
     }
   }
 
-  $('#help-modal').css("height", "0%");
-  $('#help-link').click(function() { toggleHelp(); });
-  $('#help-modal .ok-btn').click(function() { toggleHelp(); });
   function toggleHelp() {
-    var helpModal = $('#help-modal');
     if (helpModal[0].style.height === "0%") {
-      helpModal.insertAfter('#above');
-      TweenLite.to(helpModal, 1, {height:("100%")});
+      closeModal(aboutModal);
+      openModal(helpModal);
     } else {
-      TweenLite.to(helpModal, 1, {height:("0%")});
-      setTimeout(function () { helpModal.insertAfter('#below'); }, 1000);
+      closeModal(helpModal);
+    }
+  }
+
+  function closeModal(modal) {
+    if (modal[0].style.height === "0%") { return; }
+    else {
+      TweenLite.to(modal, 1, {height:("0%")});
+      setTimeout(function () { modal.insertAfter('#below'); }, 1000);
+    }
+  }
+
+  function openModal(modal) {
+    if (modal[0].style.height === "100%") { return; }
+    else {
+      modal.insertAfter('#above');
+      TweenLite.to(modal, 1, {height:("100%")});
     }
   }
 
@@ -42,13 +58,17 @@ $(document).ready(function(){
       var lightX = Math.sin(rotation * (Math.PI/180)) * (radius-2);
       var z = Math.cos(rotation * (Math.PI/180)) * radius;
       var lightZ = Math.cos(rotation * (Math.PI/180)) * (radius-2);
+      var descX = Math.sin((rotation - 5) * (Math.PI/180)) * radius;
+      var descZ = Math.cos((rotation - 5) * (Math.PI/180)) * radius;
       var html = "<a-entity id='" + file + "' class='army' object-model='src: url(/models/" + fileName + ");' rotation='0 " + rotation + " 0' position='" + x + " 0 " + z + "' scale='5 5 5'></a-entity>";
       html += "<a-entity id='" + file + "_text" + "' text='align: center; width: 12; value: " + value.name + "' rotation='0 " + (rotation + 180) + " 0' position='" + x + " 10 " + z + "'></a-entity>";
       html += "<a-entity id='" + file + "_light" + "' light='type: spot; angle: 20; intensity: 0.3; penumbra: 1' rotation='-90' position='" + lightX + " 15 " + lightZ + "'></a-entity>"
+      html += "<a-entity id='" + file + "_iden" + "' text='anchor: left; baseline: top; font: https://cdn.aframe.io/fonts/Monoid.fnt; align: left; height: 9; width: 6; wrapCount: 18" + "' visible='false' rotation='0 " + (rotation + 180 - 5) + " 0' position='" + descX + " 9 " + descZ + "'></a-entity>";
       $("#" + before).after(html);
       before = value.file;
       // setting up local storage
       localStorage.setItem(key, false);
+      localStorage.setItem(key + "_iden", "");
     });
     localStorage.setItem("progress", 0.0);
     localStorage.setItem("size", armySize);
@@ -80,6 +100,15 @@ $(document).ready(function(){
       localStorage.setItem(currEnemy, true);
       currLight[0].setAttribute('light', { intensity: 0 });
       currText[0].setAttribute('text', { color: "#7D7D7D", width: 10 });
+      var textPos = currText[0].components.position.data;
+      var startHTML = '' + (textPos.x - 2) + ' ' + textPos.y + ' ' + textPos.z;
+      var endHTML = '' + (textPos.x + 2) + ' ' + textPos.y + ' ' + textPos.z;
+      var textRot = currText[0].components.rotation.data;
+      var rotationHTML = '' + textRot.x + ' ' + textRot.y + ' ' + textRot.z;
+      var positionHTML = '' + textPos.x + ' ' + textPos.y + ' ' + textPos.z;
+      // var lineHTML = "<a-entity id='" + currEnemy + '_line' + "' line='start: " + startHTML + "; end: " + endHTML + "; color: black' rotation='" + rotationHTML + "'></a-entity>"
+      var lineHTML = "<a-entity id='" + currEnemy + '_line' + "' line='start: -2 10 -1; end: 2 10 -1; color: black' position='" + positionHTML + "' rotation='" + rotationHTML + "'></a-entity>"
+      currText.after(lineHTML);
     } else {
       $('#conquer-btn').text("DEFEAT");
       newProgress = oldProgressLabel - progressDelta;
@@ -100,6 +129,37 @@ $(document).ready(function(){
     function updateHandler() {
       progressLabel.text(counter.progress + "%");
     }
+  });
+
+  var modal = $('.modal');
+  $("#identify-btn").click(function() {
+    modal.css('display', 'block');
+    var currModel = $("#identify-btn").val();
+    $('#identify-input').val(localStorage.getItem(currModel + "_iden"));
+    $('#identify-input').focus();
+  });
+
+  $("#identify-ok-btn").click(function() {
+    var currModel = $("#identify-btn").val();
+    var newText = $('#identify-input').val();
+    localStorage.setItem(currModel + "_iden", newText);
+    $('#' + currModel + "_iden")[0].setAttribute('text', { value: newText });
+    modal.css('display', 'none');
+  });
+
+  var tl1 = new TimelineLite();
+  tl1.staggerTo(".fade-in1", 1, {opacity:1, ease:Power2.easeIn}, 3);
+  $('#whatis-btn').click(function() {
+    var tl2 = new TimelineLite();
+    tl2.staggerTo(".fade-out1", 1, {opacity:0, ease:Power2.easeIn}, -0.5);
+    tl2.staggerTo("#opening-content1", 1, {display: 'none'}, 0);
+    tl2.staggerTo(".fade-in2", 1, {opacity:1, ease:Power2.easeIn}, 6);
+  });
+  $('#letskill-btn').click(function() {
+    var tl3 = new TimelineLite();
+    tl3.staggerTo(".fade-in2", 1, {opacity:0, ease:Power2.easeIn}, -0.5);
+    tl3.staggerTo(".fade-in-logo", 1, {delay: 1, opacity:1, ease:Expo.easeIn}, 1);
+    tl3.staggerTo("#opening", 1, {height:"0%", ease:Power2.easeIn}, 1);
   });
 
 });

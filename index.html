@@ -13,14 +13,53 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
     <script src="components.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:100,100i,300,300i,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:100,100i,300,300i,400,500,700,700i" rel="stylesheet">
     <link rel="stylesheet" href="styles/index.css">
   </head>
   <body>
+    <div id="opening">
+      <div id="opening-content1" class="opening-content">
+        <div id="text1" class="opening-body fade-in1 fade-out1">
+          Most of us have two lives: The life we live, and the life unlived.
+        </div>
+        <div id="text2" class="opening-body fade-in1 fade-out1">
+          Between the two stands <strong>Resistance</strong>.
+        </div>
+        <div id="whatis-btn" class="ok-btn slick-button fade-in1 fade-out1">
+          <a>WHAT IS RESISTANCE?</a>
+        </div>
+      </div>
+      <div id="opening-content2" class="opening-content">
+        <div id="text3" class="opening-body fade-in2">
+          <strong>Resistance</strong> cannot be seen, touched, heard, or smelled. But it can be felt. We experience it as an energy field radiating from a work-in-potential. It’s a repelling force. It’s negative. Its aim is to shove us away, distract us, prevent us from doing our work. It is self-generated and self-perpetuated. Resistance is the enemy within.
+        </div>
+        <div id="text4" class="opening-body fade-in2">
+          <strong>Resistance</strong> aims to kill. Its target is the epicenter of our being: our genius, our soul, the unique and priceless gift we were put on earth to give and that no one else has but us. Resistance means business. When we fight it, we are in a war to the death.
+        </div>
+        <div id="letskill-btn" class="ok-btn slick-button fade-in2">
+          <a>LET'S KILL IT</a>
+        </div>
+      </div>
+    </div>
     <div id="about-link">about</div>
     <div id="help-link">help</div>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <p>Where do you see this quality of resistance in your life?</p>
+        </div>
+        <div class="modal-body">
+          <textarea id="identify-input" rows="5" cols="50" maxlength="180"></textarea>
+        </div>
+        <div class="modal-footer">
+          <div id='identify-ok-btn' class='ok-btn slick-button'><a>SAVE</a></div>
+        </div>
+      </div>
+    </div>
     <div id="above"></div>
     <a-scene inspector="url: https://aframe.io/releases/0.3.0/aframe-inspector.min.js">
+      <!-- ambient sounds taken from https://www.youtube.com/watch?v=uLe2emd_e9I -->
+      <a-sound src="src: url(resources/ambient.mp3)" autoplay="false" position="0 8 0" loop="true"></a-sound>
       <a-sky color="#000"></a-sky>
       <a-light type="ambient" color="#131217" intensity="0.1"></a-light>
       <a-plane id="after" position="0 0 -4" rotation="-90 0 0" width="1000" height="1000" color="#dcddda" metalness="0.1"></a-plane>
@@ -33,6 +72,7 @@
       <div class="inside-panel">
         <div id='desc-title' class='title'>face your enemy</div>
         <div id='desc-text' class='body'></div>
+        <div id='identify-btn' class='emit-button'>IDENTIFY</div>
         <img class='panel-img' src="images/panel.png" alt="description" />
       </div>
     </div>
@@ -40,9 +80,7 @@
       <div class="inside-panel">
         <div id='howto-title' class='title'>face your enemy</div>
         <div id='howto-text' class='body'></div>
-        <div id='btn-area'>
-          <div id='conquer-btn' class='button'>DEFEAT</div>
-        </div>
+        <div id='conquer-btn' class='emit-button'>DEFEAT</div>
         <img class='panel-img' src="images/panel.png" alt="description" />
       </div>
     </div>
@@ -85,6 +123,7 @@
             JSON formatting for models was exported out of <a class="links" href="https://clara.io/" target="_blank">Clara.io</a>.
             VR scene was constructed in <a class="links" href="https://aframe.io/" target="_blank">AFrame</a>.
             Most animations were done with <a class="links" href="https://greensock.com/" target="_blank">GreenSock</a>.
+            Ambient sounds were taken from <a class="links" href="https://www.youtube.com/watch?v=uLe2emd_e9I" target="_blank">SoundEffectsFactory</a>.
           </div>
         </div>
         <div class="section">
@@ -153,8 +192,9 @@
       </div>
       <div class='ok-btn slick-button'><a>OK</a></div>
     </div>
+
     <a href="index.html">
-      <img id="logo" src="images/logo.png" alt="logo" />
+      <img id="logo" class="fade-in-logo" src="images/logo.png" alt="logo" />
     </a>
   </body>
 

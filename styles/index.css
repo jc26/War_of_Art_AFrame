@@ -2,6 +2,77 @@ body {
   font-family: 'Roboto Mono', sans-serif;
 }
 
+#opening {
+  position: absolute;
+  background-color: #0F0F0F;
+  color: white;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  z-index: 1001;
+  margin: 0 auto;
+}
+
+.opening-content {
+  background-color: #0F0F0F;
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+
+#opening-content1 {
+  width: 40%;
+  margin-top: 21%;
+  z-index: 1005;
+}
+
+.opening-body {
+  text-align: center;
+  font-weight: 100;
+  font-style: italic;
+  font-size: 13px;
+}
+
+#text1 {
+  opacity: 0;
+  margin-bottom: 20px;
+}
+
+#text2 {
+  opacity: 0;
+  margin-bottom: 50px;
+}
+
+#text3 {
+  opacity: 0;
+  margin-bottom: 20px;
+}
+
+#text4 {
+  opacity: 0;
+  margin-bottom: 50px;
+}
+
+#whatis-btn, #letskill-btn {
+  opacity: 0;
+  width: 40%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+
+#opening-content2 {
+  width: 45%;
+  margin-top: 17%;
+  z-index: 1004;
+}
+
+.opening-content strong {
+  font-weight: 700;
+  font-style: italic;
+}
+
 .links {
   color: white;
 }
@@ -104,7 +175,7 @@ img#quote-img {
   left: 0;
   right: 0;
   margin-top: 60px;
-  font-weight: 100;
+  font-weight: 600;
   font-size: 12px;
   display: block;
   width: 75%;
@@ -148,6 +219,15 @@ img#quote-img {
   margin-right: 35%;
 }
 
+#identify-ok-btn {
+  width: 30%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  margin-bottom: 10px;
+  z-index: 1000;
+}
+
 /* button hover animation taken from https://codepen.io/davidicus/pen/emgQKJ */
 .slick-button {
   border: 2px solid white;
@@ -178,7 +258,7 @@ img#quote-img {
   transform: rotate(35deg);
   transition: all 550ms cubic-bezier(0.19, 1, 0.22, 1);
   width: 50px;
-  z-index: -10;
+  z-index: 1003;
 }
 
 .slick-button:hover:after {
@@ -189,17 +269,18 @@ img#quote-img {
 img#logo {
   width: 300px;
   position: absolute;
+  display: block;
   margin: 0 auto;
   left: 0;
   right: 0;
   top: 15px;
-  z-index: 1000;
+  z-index: 1002;
+  opacity: 0;
 }
 
 button.a-enter-vr-button {
   bottom: initial;
   top: -840%;
-  /*top: -520%;*/
   left: 13%;
   z-index: 999;
 }
@@ -258,7 +339,7 @@ button.a-enter-vr-button {
   position: absolute;
 }
 
-#howto-panel .inside-panel #conquer-btn {
+.emit-button {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -281,17 +362,8 @@ button.a-enter-vr-button {
   visibility: hidden;
 }
 
-/*#howto-panel .inside-panel #conquer-btn:before {
-  position:absolute;
-  content:'';
-  top:-10px;
-  right:-10px;
-  left:-10px;
-  bottom:-10px;
-}*/
-
 /* button hover effect taken from https://codepen.io/davidicus/pen/emgQKJ */
-#howto-panel .inside-panel #conquer-btn {
+.emit-button {
   border: 0 solid;
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
   outline: 1px solid;
@@ -301,7 +373,7 @@ button.a-enter-vr-button {
   transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-#howto-panel .inside-panel #btn-area:hover #conquer-btn {
+.emit-button:hover {
   border: 1px solid;
   box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
   outline-color: rgba(255, 255, 255, 0);
@@ -405,4 +477,93 @@ svg.radar {
 
 #progress-dot {
   z-index: 1000;
+}
+
+/* Modal code taken from W3Schools */
+.modal {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    padding-top: 25%; /* Location of the box */
+    left: 0;
+    bottom: -50%;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #A60000;
+    width: 40%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatebottom;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatebottom {
+    from {bottom:-500px; opacity:0}
+    to {bottom:0; opacity:1}
+}
+
+@keyframes animatebottom {
+    from {bottom:-500px; opacity:0}
+    to {bottom:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #A60000;
+  color: black;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.modal-body {
+  padding: 16px 16px;
+  background-color: #000;
+}
+
+.modal-body textarea {
+  border: none;
+  overflow: auto;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background-color: #000;
+  color: white;
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: 100;
+  width: 100%;
+}
+
+.modal-footer {
+    padding: 2px 5px;
+    background-color: #000;
+    color: white;
 }
