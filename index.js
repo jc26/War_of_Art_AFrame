@@ -60,7 +60,7 @@ $(document).ready(function(){
       var lightZ = Math.cos(rotation * (Math.PI/180)) * (radius-2);
       var descX = Math.sin((rotation - 5) * (Math.PI/180)) * radius;
       var descZ = Math.cos((rotation - 5) * (Math.PI/180)) * radius;
-      var html = "<a-entity id='" + file + "' class='army' object-model='src: url(/War_of_Art_AFrame/models/" + fileName + ");' rotation='0 " + rotation + " 0' position='" + x + " 0 " + z + "' scale='5 5 5'></a-entity>";
+      var html = "<a-entity id='" + file + "' class='army' object-model='src: https://jc26.github.io/War_of_Art_AFrame/models/" + fileName + "' rotation='0 " + rotation + " 0' position='" + x + " 0 " + z + "' scale='5 5 5'></a-entity>";
       html += "<a-entity id='" + file + "_text" + "' text='align: center; width: 12; value: " + value.name + "' rotation='0 " + (rotation + 180) + " 0' position='" + x + " 10 " + z + "'></a-entity>";
       html += "<a-entity id='" + file + "_light" + "' light='type: spot; angle: 20; intensity: 0.3; penumbra: 1' rotation='-90' position='" + lightX + " 15 " + lightZ + "'></a-entity>"
       html += "<a-entity id='" + file + "_iden" + "' text='anchor: left; baseline: top; font: https://cdn.aframe.io/fonts/Monoid.fnt; align: left; height: 9; width: 6; wrapCount: 18" + "' visible='false' rotation='0 " + (rotation + 180 - 5) + " 0' position='" + descX + " 9 " + descZ + "'></a-entity>";
