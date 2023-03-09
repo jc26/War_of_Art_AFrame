@@ -279,10 +279,10 @@ img#logo {
 }
 
 button.a-enter-vr-button {
-  bottom: initial;
-  top: -840%;
-  left: 13%;
-  z-index: 999;
+  top: initial;
+/*  top: -840%;
+  left: 13%;*/
+  z-index: 3;
 }
 
 .panel {
