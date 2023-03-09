@@ -285,6 +285,10 @@ button.a-enter-vr-button {
   z-index: 3;
 }
 
+.a-enter-vr {
+  display:none;
+}
+
 .panel {
   width: 200px;
   position: absolute;
